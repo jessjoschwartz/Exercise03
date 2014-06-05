@@ -3,10 +3,13 @@ def main():
     while True:
         input = raw_input('>')
         tokens = input.split(' ')
-        
+        nums=tokens[1:]
+        input_no_space = ''.join(nums)
+        print input_no_space
+
         if  tokens[0]=='q':
             quit()
-        elif not (input[1:]).isdigit():
+        elif not input_no_space[1:].isdigit():
             print "Cannot perfom operations on non-digits"
         elif tokens[0]=='+':
             print add(int(tokens[1]),int(tokens[2]))
@@ -17,13 +20,18 @@ def main():
         elif tokens[0]=='square':
             print square(int(tokens[1]))
         elif tokens[0]=='/':
-            print divide(int(tokens[1]),int(tokens[2]))
+            if not '0' in input_no_space[2:]:
+                print divide(int(tokens[1]),int(tokens[2]))
+            else:
+                print "Cannot divide by zero"
         elif tokens[0]=='cube':
             print cube(int(tokens[1]))
         elif tokens[0]=='^':
             print power(int(tokens[1]),int(tokens[2]))
         elif tokens[0]=='mod':
             print mod(int(tokens[1]),int(tokens[2]))
+        elif tokens[0]=='sqrt':
+            print sqrt(int(tokens[1]))
         else:
             print "I don't understand"
 
@@ -52,6 +60,9 @@ def power(num1, num2):
 
 def mod(num1, num2):
     return num1 % num2
+
+def sqrt(num1):
+    return num1^.5
 
 if __name__=="__main__":
     main()
