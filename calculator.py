@@ -1,12 +1,13 @@
 def main():
     
     while True:
-        print ">"
         input = raw_input('>')
         tokens = input.split(' ')
-
-        if tokens[0]=='q':
+        
+        if  tokens[0]=='q':
             quit()
+        elif not (input[1:]).isdigit():
+            print "Cannot perfom operations on non-digits"
         elif tokens[0]=='+':
             print add(int(tokens[1]),int(tokens[2]))
         elif tokens[0]=='-':
@@ -41,10 +42,10 @@ def divide(num1, num2):
     return float(num1) / float(num2)
 
 def square(num1):
-    return num1 * num1
+    return num1 ^ 2
 
 def cube(num1):
-    return num1 * num1 * num1
+    return num1 ^ 3
 
 def power(num1, num2):
     return num1 ^ num2
